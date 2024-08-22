@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import ProductList from "./components/ProductList";
-import Basket from "./components/Basket";
-import Total from "./components/Total";
-import { Product, BasketItem } from "./types";
-import "./app.css";
+import React, { useState } from 'react';
+import ProductList from './components/ProductList';
+import Basket from './components/Basket';
+import Total from './components/Total';
+import { Product, BasketItem } from './types';
+import './App.css';
 
 const App: React.FC = () => {
   const [basket, setBasket] = useState<BasketItem[]>([]);
@@ -44,12 +44,12 @@ const App: React.FC = () => {
   );
 
   return (
-    <div className="container">
+    <div className='container'>
       <ProductList
         onAddToCart={handleAddToCart}
         onRemoveFromCart={handleRemoveFromCart}
       />
-      <div className="cart-container">
+      <div className='cart-container'>
         <Basket
           items={basket}
           onAddToCart={handleAddToCart}
