@@ -1,18 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Product } from "../types";
-import { fetchProducts } from "../services/ProductService";
-import ProductItem from "./ProductItem";
-import Filter from "./Filter";
+import React, { useEffect, useState } from 'react';
+import { Product } from '../types';
+import { fetchProducts } from '../services/ProductService';
+import ProductItem from './ProductItem';
+import Filter from './Filter';
 
 interface ProductListProps {
   onAddToCart: (product: Product) => void;
-  onRemoveFromCart: (product: Product) => void;
 }
 
-const ProductList: React.FC<ProductListProps> = ({
-  onAddToCart,
-  onRemoveFromCart,
-}) => {
+const ProductList: React.FC<ProductListProps> = ({ onAddToCart }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
@@ -27,7 +23,7 @@ const ProductList: React.FC<ProductListProps> = ({
   }, []);
 
   const filterByColor = (color: string) => {
-    if (color === "") {
+    if (color === '') {
       setFilteredProducts(products);
     } else {
       setFilteredProducts(
@@ -37,14 +33,13 @@ const ProductList: React.FC<ProductListProps> = ({
   };
 
   return (
-    <div className="product-list">
+    <div className='product-list'>
       <Filter onFilter={filterByColor} />
       {filteredProducts.map((product) => (
         <ProductItem
           key={product.id}
           product={product}
           onAddToCart={onAddToCart}
-          onRemoveFromCart={onRemoveFromCart}
         />
       ))}
     </div>

@@ -45,16 +45,9 @@ const App: React.FC = () => {
 
   return (
     <div className='container'>
-      <ProductList
-        onAddToCart={handleAddToCart}
-        onRemoveFromCart={handleRemoveFromCart}
-      />
+      <ProductList onAddToCart={handleAddToCart} />
       <div className='cart-container'>
-        <Basket
-          items={basket}
-          onAddToCart={handleAddToCart}
-          onRemoveFromCart={handleRemoveFromCart}
-        />
+        <Basket items={basket} onRemoveFromCart={handleRemoveFromCart} />
         <Total total={total} />
       </div>
     </div>
