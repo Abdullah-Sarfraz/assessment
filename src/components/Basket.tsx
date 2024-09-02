@@ -3,10 +3,17 @@ import { BasketItem } from '../types';
 
 interface Props {
   items: BasketItem[];
+  onAddToCart: (item: BasketItem) => void;
   onRemoveFromCart: (item: BasketItem) => void;
+  handleRemoveAllFromCart: (item: BasketItem) => void;
 }
 
-const Basket: React.FC<Props> = ({ items, onRemoveFromCart }) => {
+const Basket: React.FC<Props> = ({
+  items,
+  onAddToCart,
+  onRemoveFromCart,
+  handleRemoveAllFromCart,
+}) => {
   return (
     <div className='basket'>
       <h2>Your Basket</h2>
@@ -22,9 +29,11 @@ const Basket: React.FC<Props> = ({ items, onRemoveFromCart }) => {
                 <p>£{item.price}</p>
               </div>
               <div className='qty-controls'>
+                <button onClick={() => onRemoveFromCart(item)}>-</button>
                 <span>{item.quantity}</span>
-                <button onClick={() => onRemoveFromCart(item)}>
-                  Remove from Cart
+                <button onClick={() => onAddToCart(item)}>+</button>
+                <button onClick={() => handleRemoveAllFromCart(item)}>
+                  Remove From Cart
                 </button>
               </div>
             </div>

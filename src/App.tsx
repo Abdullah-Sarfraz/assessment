@@ -38,6 +38,12 @@ const App: React.FC = () => {
     });
   };
 
+  const handleRemoveAllFromCart = (product: Product) => {
+    setBasket((prevBasket) => {
+      return prevBasket.filter((item) => item.id !== product.id);
+    });
+  };
+
   const total = basket.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -45,9 +51,17 @@ const App: React.FC = () => {
 
   return (
     <div className='container'>
-      <ProductList onAddToCart={handleAddToCart} />
+      <ProductList
+        onAddToCart={handleAddToCart}
+        onRemoveFromCart={handleRemoveFromCart}
+      />
       <div className='cart-container'>
-        <Basket items={basket} onRemoveFromCart={handleRemoveFromCart} />
+        <Basket
+          items={basket}
+          onAddToCart={handleAddToCart}
+          onRemoveFromCart={handleRemoveFromCart}
+          handleRemoveAllFromCart={handleRemoveAllFromCart}
+        />
         <Total total={total} />
       </div>
     </div>
