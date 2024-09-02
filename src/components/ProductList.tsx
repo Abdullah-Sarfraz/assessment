@@ -6,13 +6,9 @@ import Filter from './Filter';
 
 interface ProductListProps {
   onAddToCart: (product: Product) => void;
-  onRemoveFromCart: (product: Product) => void;
 }
 
-const ProductList: React.FC<ProductListProps> = ({
-  onAddToCart,
-  onRemoveFromCart,
-}) => {
+const ProductList: React.FC<ProductListProps> = ({ onAddToCart }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
